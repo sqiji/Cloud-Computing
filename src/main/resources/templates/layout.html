@@ -20,24 +20,22 @@
             <li>
                 <a th:href="@{/users/}">Home</a>
             </li>
-            <li sec:authorize="isAnonymous()">
-                <a th:href="@{/users/register}">Register</a>
-            </li>
-            <li sec:authorize="isAnonymous()">
-                <a th:href="@{/users/loginForm}">Login</a>
-            </li>
-            <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/users/logout}">Logout</a>
-            </li> 
             <li sec:authorize="isAuthenticated()">
                 <a th:href="@{/events}">Events</a>
             </li> 
             <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/events/create}">Create Event</a>
-            </li> 
-            <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/events/search}">Search Events</a>
+                <a th:href="@{/events/search}">Search</a>
             </li>
+            <li sec:authorize="isAnonymous()">
+                <a th:href="@{/users/loginForm}">Login</a>
+            </li>
+            <li sec:authorize="isAnonymous()">
+                <a th:href="@{/users/register}">Register</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/users/logout}">Logout</a>
+            </li> 
+            
 
             <!--
             <li style="color: white;">

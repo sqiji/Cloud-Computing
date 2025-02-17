@@ -38,25 +38,6 @@ public class UsersController {
         return "register";
     }
 
-    // response to the form submission. create a new user and save it to the database
-    // @PostMapping("/register")
-    // public String registerUser(@ModelAttribute UserModel user, Model model) {
-    //     UserModel existingUser = userService.findByLoginName(user.getUserName());
-    //     if (existingUser != null) {
-    //         model.addAttribute("error", "User already exists!");
-    //         model.addAttribute("user", user);
-    //         return "register";
-    //     }
-      
-    //     //setDefaultValues(user);
-    //     // save the user to the database
-
-    //     userService.save(user);
-    //     logger.info("User registered: {}", user.getUserName());
-    //     model.addAttribute("user", user);
-    //     return "redirect:/users/loginForm";
-    // }
-
     //response to the form submission. create a new user and save it to the database
     @PostMapping("/register")
     public String registerUser(@ModelAttribute UserModel user, Model model) {
@@ -80,15 +61,6 @@ public class UsersController {
     model.addAttribute("user", user);
     return "redirect:/users/loginForm";  // Redirect to the login page after successful registration
 }
-
-    // if register form does not have these values, set default values here
-    // private void setDefaultValues(UserModel user) {
-    //     // set default values for the user
-    //     user.setEnabled(true);
-    //     user.setAccountNonExpired(true);
-    //     user.setCredentialsNonExpired(true);
-    //     user.setAccountNonLocked(true);
-    // }
 
 
     // show the login form.

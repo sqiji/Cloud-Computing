@@ -64,6 +64,5 @@ public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception 
 }
 
 
-
 }
 

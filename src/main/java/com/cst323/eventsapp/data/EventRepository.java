@@ -2,12 +2,7 @@ package com.cst323.eventsapp.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,11 +26,11 @@ public class EventRepository implements EventRepositoryInterface {
     }
 
 
-    @Override
-    public List<EventEntity> findByOrganizerid(Long organizerid) {
-        String sql = "SELECT * FROM events WHERE organizerid = ?";
-        return jdbcTemplate.query(sql, new EventModelRowMapper(), organizerid);
-    }
+    // @Override
+    // public List<EventEntity> findByOrganizerid(Long organizerid) {
+    //     String sql = "SELECT * FROM events WHERE organizerid = ?";
+    //     return jdbcTemplate.query(sql, new EventModelRowMapper(), organizerid);
+    // }
 
     @Override
     public List<EventEntity> findAll() {

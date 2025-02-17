@@ -47,37 +47,9 @@ public class UserRepository implements UserRepositoryInterface {
         String sql = "DELETE FROM users WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+    
 
     @Override
-    // public UserEntity save(UserEntity userEntity) {
-    //     if (userEntity.getId() == null) {
-    //         String sql = "INSERT INTO users (login_name, password) VALUES (?, ?)";
-    //         jdbcTemplate.update(sql,
-    //                 userEntity.getUserName(),
-    //                 userEntity.getPassword()
-    //                 // userEntity.isEnabled(),
-    //                 // userEntity.isAccountNonExpired(),
-    //                 // userEntity.isCredentialsNonExpired(),
-    //                 // userEntity.isAccountNonLocked()
-    //         );
-    //         Long id = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Long.class);
-    //         userEntity.setId(id);
-    //     } else {
-    //         String sql = "UPDATE users SET login_name = ?, password = ? WHERE id = ?";
-    //         jdbcTemplate.update(sql,
-    //                 userEntity.getUserName(),
-    //                 userEntity.getPassword(),
-    //                 // userEntity.isEnabled(),
-    //                 // userEntity.isAccountNonExpired(),
-    //                 // userEntity.isCredentialsNonExpired(),
-    //                 // userEntity.isAccountNonLocked(),
-    //                 userEntity.getId()
-    //         );
-    //     }
-    //     return userEntity;
-    // }
-
-
     public UserEntity save(UserEntity userEntity) {
         if (userEntity.getId() == null) {  // New user
             String sql = "INSERT INTO users (login_name, password) VALUES (?, ?)";
