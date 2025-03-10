@@ -5,8 +5,12 @@
 
     <script>
         function confirmDelete() {
-            return confirm("Are you sure you want to delete the event?" + 
-                    "This will delete the event permanently!");
+            if (confirm("Are you sure you want to delete the event? This will delete the event permanently!")) {
+                return true; // Allow the link to proceed
+            } else {
+                event.preventDefault(); // Prevent the link from being followed
+                return false;
+            }
         }
     </script>
     
