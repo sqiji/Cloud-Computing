@@ -16,8 +16,9 @@
 
 /* Apply the custom properties */
 body {
+    
     font-family: 'Open Sans', sans-serif;
-    background-color: var(--background-color);
+    background-color: whitesmoke;
     margin: 30px;
     padding: 0;
     color: var(--text-color);
@@ -25,7 +26,7 @@ body {
 }
 
 nav { 
-    background-color: var(--primary-color);
+    background-color: skyblue;
     overflow: hidden;
     margin: -30px -30px 30px -30px;
     padding: 20px;
@@ -38,7 +39,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    color: var(--text-color);
+    color: white;
 }
 
 nav ul li {
@@ -47,7 +48,7 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    color: var(--text-on-dark);
+    color: white;
     text-align: center;
     padding: 12px 20px;
     text-decoration: none;
@@ -60,39 +61,41 @@ nav ul li a {
 
 
 nav ul li a:hover {
-    background-color: var(--hover-color);
+    background-color: lightgrey;
     border-radius: 4px;
 }
 
 table {
+    
     width: 90%;
     border-collapse: collapse;
     margin: 30px auto;
-    border: 2px solid var(--table-border-color);
+    border: 2px solid black;
 }
 
 table th {
-    background-color: var(--table-header-color);
-    color: var(--text-on-dark);
+    background-color: green;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
     padding: 12px;
     font-family: 'Montserrat', sans-serif;
-    border: 2px solid var(--table-border-color);
+    border: 2px solid black;
     text-transform: uppercase;
 }
 
 table td {
-    background-color: var(--table-row-color);
-    color: var(--text-on-dark);
+    background-color: rgb(165, 212, 69);
+    color: black;
+    font-weight: bold;
     padding: 12px;
-    border: 2px solid var(--table-border-color);
+    border: 2px solid black;
     text-align: center;
 }
 
 table td a {
     
     /* button style */
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
@@ -105,8 +108,6 @@ table td a {
 }
 
 button {
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -116,8 +117,5 @@ button {
     transition: background-color 0.3s ease-in-out;
 }
 
-button:hover {
-    background-color: var(--hover-color);
-}
 
 /* End of styles.css */
