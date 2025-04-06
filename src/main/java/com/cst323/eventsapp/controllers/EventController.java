@@ -2,6 +2,8 @@ package com.cst323.eventsapp.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,8 @@ public class EventController {
 
     private final EventService eventService;
 
+    private static final Logger logger = LoggerFactory.getLogger(EventController.class);
+
     @Autowired
     public EventController(EventService eventService) {
         this.eventService = eventService;
@@ -32,6 +36,7 @@ public class EventController {
 
     @GetMapping
     public String getAllEvents(Model model) {
+        logger.trace("******* handling request to get all events");
         List<EventModel> events = eventService.findAll();
         model.addAttribute("events", events);
         model.addAttribute("message", "Showing all events");
@@ -41,6 +46,7 @@ public class EventController {
 
     @GetMapping("/create")
     public String showCreateEventForm(Model model) {
+        logger.trace("******* handling request form create form");
         model.addAttribute("event", new EventModel());
         model.addAttribute("pageTitle", "Create Event");
         return "create-event";
@@ -56,7 +62,7 @@ public class EventController {
         event.setOrganizerid(Encode.forHtml(event.getOrganizerid()));
         event.setDescription(Encode.forHtml(event.getDescription()));
         */
-
+        logger.trace("******* new event was created");
         if (result.hasErrors()) {
             model.addAttribute("pageTitle", "Create Event");
             return "create-event";
@@ -67,6 +73,7 @@ public class EventController {
 
     @GetMapping("/edit/{id}")
     public String showEditEventForm(@PathVariable String id, Model model) {
+        logger.trace("******* handling request from edit form");
         EventModel event = eventService.findById(id);
         model.addAttribute("event", event);
         return "edit-event";
@@ -83,6 +90,7 @@ public class EventController {
         event.setDescription(Encode.forHtml(event.getDescription()));
         */
 
+        logger.trace("******* event was updated");
         EventModel updatedEvent = eventService.updateEvent(id, event);
         model.addAttribute("event", updatedEvent);
         return "redirect:/events";
@@ -90,6 +98,7 @@ public class EventController {
 
     @GetMapping("/delete/{id}")
     public String deleteEvent(@PathVariable String id) {
+        logger.trace("******* event was deleted");
         eventService.delete(id);
         return "redirect:/events";
     }
@@ -97,6 +106,7 @@ public class EventController {
     // EventController.java (part of the existing file)
     @GetMapping("/search")
     public String searchForm(Model model) {
+        logger.trace("******* handling request from search form");
         model.addAttribute("eventSearch", new EventSearch());
         return "searchForm";
     }
@@ -104,6 +114,9 @@ public class EventController {
     @PostMapping("/search")
     public String search(@ModelAttribute @Valid EventSearch eventSearch, 
             BindingResult result, Model model, @RequestParam("searchString") String searchTerm) {
+
+        logger.trace("******* searched event found");
+
         if (result.hasErrors()) {
             return "searchForm";
         }
@@ -120,6 +133,9 @@ public class EventController {
     
     //Method to filter out potentially dangerous input
     public String sanitizeInput(String input){
+
+        logger.trace("******* In sanitizeInput()");
+
         if (input == null){
             return null;
         }

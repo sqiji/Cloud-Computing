@@ -16,6 +16,7 @@ import com.cst323.eventsapp.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
+
 @Controller
 @RequestMapping("/users")
 public class UsersController {
@@ -29,11 +30,13 @@ public class UsersController {
 
     @GetMapping("/")
     public String home() {
+        logger.trace("******* User logged in");
         return "home";
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
+        logger.trace("******* Handling request from register form");
         model.addAttribute("user", new UserModel());
         return "register";
     }
@@ -58,21 +61,32 @@ public class UsersController {
     userService.save(userEntity);
 
     logger.info("User registered: {}", user.getUserName());
+
     model.addAttribute("user", user);
-    return "redirect:/users/loginForm";  // Redirect to the login page after successful registration
+
+    logger.trace("******* new user has been registred"); 
+
+    return "redirect:/users/loginForm";  // Redirect to the login page after successful registration   
 }
 
 
     // show the login form.
     @GetMapping("/loginForm")
     public String showLoginForm(Model model) {
+        
+        logger.trace("******* handling request from login form");
+
         model.addAttribute("user", new UserModel());
         model.addAttribute("pageTitle", "Login");
+        
         return "login";
     }
  
     @GetMapping("/logout")
     public String logout(HttpSession session) {
+
+        logger.trace("******* handling request form logout");
+
         session.invalidate();
         return "redirect:/users/loginForm";
     }
