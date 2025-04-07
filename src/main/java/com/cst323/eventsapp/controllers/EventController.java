@@ -21,6 +21,11 @@ import com.cst323.eventsapp.service.EventService;
 
 import jakarta.validation.Valid;
 
+
+/**
+ * This controller handles HTTP requests related to events.
+ * It provides functionalities for displaying, creating, editing, deleting, and searching events.
+ */
 @Controller
 @RequestMapping("/events")
 public class EventController {
@@ -29,11 +34,22 @@ public class EventController {
 
     private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 
+    /**
+     * Constructor for the EventController.
+     * It receives the EventService dependency through constructor injection.
+     * @param eventService The service responsible for event-related business logic.
+     */
     @Autowired
     public EventController(EventService eventService) {
         this.eventService = eventService;
     }
 
+    /**
+     * Handles GET requests to the base path "/events".
+     * Retrieves all events from the EventService and displays them on the "events" view.
+     * @param model The Spring Model object used to pass data to the view.
+     * @return The name of the view to render (in this case, "events").
+     */
     @GetMapping
     public String getAllEvents(Model model) {
         logger.trace("******* handling request to get all events");
@@ -44,6 +60,12 @@ public class EventController {
         return "events";
     }
 
+    /**
+     * Handles GET requests to "/events/create".
+     * Displays the form for creating a new event.
+     * @param model The Spring Model object used to pass data to the view.
+     * @return The name of the view to render (in this case, "create-event").
+     */
     @GetMapping("/create")
     public String showCreateEventForm(Model model) {
         logger.trace("******* handling request form create form");
@@ -52,16 +74,16 @@ public class EventController {
         return "create-event";
     }
 
+    /**
+     * Handles POST requests to "/events/create".
+     * Creates a new event based on the submitted form data.
+     * @param event   The EventModel object populated with the form data.
+     * @param result  The BindingResult object that holds the validation results.
+     * @param model   The Spring Model object used to pass data to the view (in case of validation errors).
+     * @return Redirects to the "/events" page upon successful creation, otherwise returns to the "create-event" form with error messages.
+     */
     @PostMapping("/create")
     public String createEvent(@ModelAttribute @Valid EventModel event, BindingResult result, Model model) {
-
-        /*
-        // Encode fields to prevent XSS
-        event.setName(Encode.forHtml(event.getName()));
-        event.setLocation(Encode.forHtml(event.getLocation()));
-        event.setOrganizerid(Encode.forHtml(event.getOrganizerid()));
-        event.setDescription(Encode.forHtml(event.getDescription()));
-        */
         logger.trace("******* new event was created");
         if (result.hasErrors()) {
             model.addAttribute("pageTitle", "Create Event");
@@ -71,6 +93,14 @@ public class EventController {
         return "redirect:/events";
     }
 
+
+     /**
+     * Handles GET requests to "/events/edit/{id}".
+     * Displays the form for editing an existing event.
+     * @param id    The ID of the event to be edited, extracted from the URL path.
+     * @param model The Spring Model object used to pass data to the view.
+     * @return The name of the view to render (in this case, "edit-event").
+     */
     @GetMapping("/edit/{id}")
     public String showEditEventForm(@PathVariable String id, Model model) {
         logger.trace("******* handling request from edit form");
@@ -79,23 +109,29 @@ public class EventController {
         return "edit-event";
     }
 
+    /**
+     * Handles POST requests to "/events/edit/{id}".
+     * Updates an existing event based on the submitted form data.
+     * @param id    The ID of the event to be updated, extracted from the URL path.
+     * @param event The EventModel object populated with the updated form data.
+     * @param model The Spring Model object used to pass data to the view.
+     * @return Redirects to the "/events" page after successful update.
+     */
     @PostMapping("/edit/{id}")
     public String updateEvent(@PathVariable String id, @ModelAttribute EventModel event, Model model) {
-        
-        /*
-        // Encode fields to prevent XSS
-        event.setName(Encode.forHtml(event.getName()));
-        event.setLocation(Encode.forHtml(event.getLocation()));
-        event.setOrganizerid(Encode.forHtml(event.getOrganizerid()));
-        event.setDescription(Encode.forHtml(event.getDescription()));
-        */
-
+    
         logger.trace("******* event was updated");
         EventModel updatedEvent = eventService.updateEvent(id, event);
         model.addAttribute("event", updatedEvent);
         return "redirect:/events";
     }
 
+     /**
+     * Handles GET requests to "/events/delete/{id}".
+     * Deletes an event with the specified ID.
+     * @param id The ID of the event to be deleted, extracted from the URL path.
+     * @return Redirects to the "/events" page after successful deletion.
+     */
     @GetMapping("/delete/{id}")
     public String deleteEvent(@PathVariable String id) {
         logger.trace("******* event was deleted");
@@ -104,6 +140,12 @@ public class EventController {
     }
 
     // EventController.java (part of the existing file)
+    /**
+     * Handles GET requests to "/events/search".
+     * Displays the form for searching events.
+     * @param model The Spring Model object used to pass data to the view.
+     * @return The name of the view to render (in this case, "searchForm").
+     */
     @GetMapping("/search")
     public String searchForm(Model model) {
         logger.trace("******* handling request from search form");
@@ -111,6 +153,15 @@ public class EventController {
         return "searchForm";
     }
 
+    /**
+     * Handles POST requests to "/events/search".
+     * Searches for events based on the submitted search criteria.
+     * @param eventSearch The EventSearch object populated with the search criteria from the form.
+     * @param result      The BindingResult object that holds the validation results for the search form.
+     * @param model       The Spring Model object used to pass data to the view.
+     * @param searchTerm  The search term explicitly passed as a request parameter.
+     * @return Returns the "searchForm" view with error messages if validation fails, otherwise returns the "events" view with the search results.
+     */
     @PostMapping("/search")
     public String search(@ModelAttribute @Valid EventSearch eventSearch, 
             BindingResult result, Model model, @RequestParam("searchString") String searchTerm) {
@@ -131,7 +182,11 @@ public class EventController {
 
 
     
-    //Method to filter out potentially dangerous input
+    /**
+     * Method to filter out potentially dangerous input to prevent security vulnerabilities like SQL injection.
+     * @param input The string to be sanitized.
+     * @return The sanitized string.
+     */
     public String sanitizeInput(String input){
 
         logger.trace("******* In sanitizeInput()");
