@@ -55,7 +55,6 @@ public class EventController {
         logger.trace("******* handling request to get all events");
         List<EventModel> events = eventService.findAll();
         model.addAttribute("events", events);
-        model.addAttribute("message", "Showing all events");
         model.addAttribute("pageTitle", "Events");
         return "events";
     }
