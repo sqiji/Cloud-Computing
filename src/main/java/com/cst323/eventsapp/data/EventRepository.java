@@ -147,12 +147,13 @@ public class EventRepository implements EventRepositoryInterface {
      * @return A List of EventEntity objects whose description contains the search term.
      */
     @Override
-    public List<EventEntity> findByDescription(String description) {
+    public List<EventEntity> findByDescription(String searchTerm) {
 
         logger.trace("****** handle request from findByDescription()");
 
-        String sql = "SELECT * FROM events WHERE description LIKE ?";
-        return jdbcTemplate.query(sql, new EventModelRowMapper(), "%" + description + "%");
+        String trimmedSearch = searchTerm.trim();
+        String sql = "SELECT * FROM events WHERE LOWER(description) LIKE LOWER(?) OR LOWER(name) LIKE LOWER(?)";
+        return jdbcTemplate.query(sql, new EventModelRowMapper(), "%" + trimmedSearch  + "%", "%" + trimmedSearch  + "%");
     }
 
     /**
