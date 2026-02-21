@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.cst323</groupId>
 	<artifactId>eventsapp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>eventsapp</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Full-Stack Multi-Cloud Event Management System</description>
 	<url/>
 	<licenses>
 		<license/>
