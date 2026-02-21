@@ -24,23 +24,27 @@ A full-stack event management system designed for cloud-agnostic deployment and 
 ### Sitemap & Navigation
 This diagram shows the user flow and how different pages (Login, Home, Events, Search) are connected.
 
-![Sitemap](/documents/Sitemap.jpg)
+[Sitemap](/documents/Sitemap.jpg)
 <br>
 <br>
-![Flowchart](/documets/Flowchart.jpg). 
+[Flowchart](/documets/Flowchart.jpg). 
 
+## User Interface Diagrams:
+Wireframes were designed in Figma to plan and validate the user experience before implementation.
+
+[Wireframe](/documents/Wireframe.jpg)
 
 ### UML Class Diagram
 This diagram represents the backend structure, showing the relationships between the Controller, Service, and Repository layers.
 <br>
-![UML diagram](/documents/UML.jpg).
+[UML diagram](/documents/UML.jpg).
 
 
 ### Database Schema (ER Diagram)
 The relational structure for our User and Event data.
 <br>
 
-![ER diagram](/documents/UML.jpg).
+[ER diagram](/documents/UML.jpg).
 
 ---
 
