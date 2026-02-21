@@ -24,23 +24,23 @@ A full-stack event management system designed for cloud-agnostic deployment and 
 ### Sitemap & Navigation
 This diagram shows the user flow and how different pages (Login, Home, Events, Search) are connected.
 
-![Sitemap](./documents/Sitemap.jpg)
+![Sitemap](/documents/Sitemap.jpg)
 <br>
 <br>
-![Flowchart](./documets/Flowchart.jpg). 
+![Flowchart](/documets/Flowchart.jpg). 
 
 
 ### UML Class Diagram
 This diagram represents the backend structure, showing the relationships between the Controller, Service, and Repository layers.
 <br>
-![UML diagram](./documents/UML.jpg).
+![UML diagram](/documents/UML.jpg).
 
 
 ### Database Schema (ER Diagram)
 The relational structure for our User and Event data.
 <br>
 
-![ER diagram](./documents/UML.jpg).
+![ER diagram](/documents/UML.jpg).
 
 ---
 
@@ -77,5 +77,5 @@ We implemented a "Fail Fast, Recover Quickly" philosophy:
 
 ---
 **Author: Soran Qiji\
-Course: Cloud Computing
+Course: Cloud Computing\
 Grand Canyon University**
