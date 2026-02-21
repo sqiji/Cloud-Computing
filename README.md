@@ -2,7 +2,7 @@
 
 A full-stack event management system designed for cloud-agnostic deployment and high availability. This project demonstrates the ability to architect, secure, and host a Java application across **AWS, Microsoft Azure, Google Cloud (GCP), and Heroku**.
 
-## 📖 Table of Contents
+## Table of Contents
 - [Features](#-features)
 - [System Design](#-system-design)
 - [Technical Stack](#-technical-stack)
@@ -11,7 +11,7 @@ A full-stack event management system designed for cloud-agnostic deployment and 
 
 ---
 
-## 🚀 Features
+## Features
 - **User Authentication:** Secure registration and login using BCrypt encryption.
 - **Event Management:** Full CRUD (Create, Read, Update, Delete) for event scheduling.
 - **Search Functionality:** Dynamic search to find events by title or description.
@@ -19,23 +19,32 @@ A full-stack event management system designed for cloud-agnostic deployment and 
 
 ---
 
-## 📐 System Design
+## System Design
 
-### 🗺️ Sitemap & Navigation
+### Sitemap & Navigation
 This diagram shows the user flow and how different pages (Login, Home, Events, Search) are connected.
 
+![Sitemap](./documents/Sitemap.jpg)
+<br>
+<br>
+![Flowchart](./documets/Flowchart.jpg). 
 
-### 🏗️ UML Class Diagram
+
+### UML Class Diagram
 This diagram represents the backend structure, showing the relationships between the Controller, Service, and Repository layers.
+<br>
+![UML diagram](./documents/UML.jpg).
 
 
-### 🗄️ Database Schema (ER Diagram)
+### Database Schema (ER Diagram)
 The relational structure for our User and Event data.
+<br>
 
+![ER diagram](./documents/UML.jpg).
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 - **Backend:** Java 17, Spring Boot 3.3.0
 - **Frontend:** Thymeleaf, HTML5, CSS3, Bootstrap
 - **Database:** MySQL (Local & Cloud-hosted)
@@ -43,11 +52,11 @@ The relational structure for our User and Event data.
 
 ---
 
-## ☁️ Cloud Infrastructure
+## Cloud Infrastructure
 
 This project validates "write once, run anywhere" cloud deployment.
 
-### 🌐 Multi-Cloud Architecture Flowchart
+### Multi-Cloud Architecture Flowchart
 This flowchart illustrates the request flow from the user to the specific cloud providers and the centralized database.
 
 
@@ -59,9 +68,14 @@ This flowchart illustrates the request flow from the user to the specific cloud 
 
 ---
 
-## 🔄 DevOps & Monitoring
+## DevOps & Monitoring
 We implemented a "Fail Fast, Recover Quickly" philosophy:
 
 - **CI/CD:** Automated deployment via GitHub Actions and Heroku Pipelines.
 - **Logging:** Centralized logs using **SLF4J** and **Loggly**.
 - **Health Checks:** 24/7 uptime monitoring via **Uptime Robot**.
+
+---
+**Author: Soran Qiji\
+Course: Cloud Computing
+Grand Canyon University**
