@@ -1,6 +1,7 @@
 # Events App - Multi-Cloud Java Spring Boot Application
+A full-stack event management system designed for high availability and tested for cloud-agnostic deployment. This project demonstrates the ability to architect, secure, and host a Java application, with specific configurations validated for **AWS, Microsoft Azure, Google Cloud (GCP), and Heroku**.
 
-A full-stack event management system designed for cloud-agnostic deployment and high availability. This project demonstrates the ability to architect, secure, and host a Java application across **AWS, Microsoft Azure, Google Cloud (GCP), and Heroku**.
+---
 
 ## Table of Contents
 - [Features](#-features)
@@ -21,12 +22,14 @@ A full-stack event management system designed for cloud-agnostic deployment and 
 
 ## System Design
 
-### Sitemap & Navigation
+### Sitemap & Navigation:
 This diagram shows the user flow and how different pages (Login, Home, Events, Search) are connected.
 
 [Sitemap](/documents/Sitemap.jpg)
-<br>
-<br>
+
+### Application Architecture:
+This flowchart illustrates the request flow from the user through the cloud environment to the persistence layer.
+
 [Flowchart](/documets/Flowchart.jpg). 
 
 ## User Interface Diagrams:
@@ -35,7 +38,7 @@ Wireframes were designed in Figma to plan and validate the user experience befor
 [Wireframe](/documents/Wireframe.jpg)
 
 ### UML Class Diagram
-This diagram represents the backend structure, showing the relationships between the Controller, Service, and Repository layers.
+Represents the backend structure, showing the relationships between the Controller, Service, and Repository layers.
 <br>
 [UML diagram](/documents/UML.jpg).
 
@@ -57,18 +60,21 @@ The relational structure for our User and Event data.
 ---
 
 ## Cloud Infrastructure
+The application is architected for cross-platform compatibility. While not currently live to manage subscription costs, the codebase is fully deployment-ready.
 
-This project validates "write once, run anywhere" cloud deployment.
+The repository includes a _deployment-configs/_ directory containing the specific environment variables, property files, and build configurations validated for:
 
-### Multi-Cloud Architecture Flowchart
-This flowchart illustrates the request flow from the user to the specific cloud providers and the centralized database.
+- **Heroku (Prime Configuration):** Fully configuration with _system.properties_ and JawsDB integration for Heroku Pipelines.
+- **AWS (Validated):** Compatible with Elastic Beanstalk (Corretto 17) and RDS MySQL.
+- **Microsoft Azure (Validated):** Configurated for Azure App Service with Azure Database for MySQL.
+- **Google Cloud (Validated):** Ready for App Emgine (Java Flexible) and Cloud SQL.
 
 
-**Deployment Highlights:**
-- **AWS:** Deployed via Elastic Beanstalk using Corretto 17 and RDS MySQL.
-- **Microsoft Azure:** Hosted on Azure App Service with Azure Database for MySQL Flexible Server.
-- **Google Cloud:** Implemented using App Engine (Java Flexible) and Cloud SQL.
-- **Heroku:** Primary production host using JawsDB and Heroku Pipelines for CI/CD.
+**Deployment and Monitoring:**
+The project implements professional-grade monitoring and deployment workflows:
+- **CI/CD:** Configuration ready for Heroku Piplines and GitHub Actions.
+- **Logging:** Centralized logs using **SLF4J** and **Loggly**.
+- **Health Check:** Pre-configured for **Uptime Robot** monitoring upon deployment.
 
 ---
 
