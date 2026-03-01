@@ -1,5 +1,5 @@
 # Events App - Multi-Cloud Java Spring Boot Application
-A **full-stack milestone project** developed to simulate an event management system designed for high availability. This project demonstrates the ability to architect, secure, and host a Java application, with specific configurations validated for **AWS**, **Microsoft Azure**, **Google Cloud (GCP)**, and **Heroku**.
+A **full-stack event management milestone project** designed for high availability and deployment-ready architecture. This project demonstrates the ability to architect, secure, and configure Java applications for cross-platform compatibility, with deployment configurations validated for **AWS, Microsoft Azure, Google Cloud (GCP), and Heroku**.
 
 ---
 
